@@ -3,7 +3,18 @@
 
 <head>
     <title>My World</title>
+    <style>
+        table,
+        th,
+        td {
+            border: solid black;
+            border-collapse: collapse;
+        }
 
+        th {
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,7 +47,190 @@
     </ul>
 
     <p>Do you want to know about my super power ? <a href="aboutme.html"> Click here</a></p>
-    
+
+    <hr>
+    <p>Below are the few Food item I would recommend every one to try in India.</p>
+
+    <table style="width:25%">
+        <tr>
+            <th>Food</th>
+            <th>Location</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Shavarma</td>
+            <td>DLF Gachibouli, Hyderabad, India</td>
+            <td>1.45$</td>
+        </tr>
+        <tr>
+            <td>Mandi</td>
+            <td>Moosapet, Hyderabad, India</td>
+            <td>4.00$</td>
+        </tr>
+        <tr>
+            <td>PaniPuri</td>
+            <td>EveryStreet Courner in India :)</td>
+            <td>0.10$</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>Depth First Search</h3>
+    <blockquote>
+        <p>
+            Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. The
+            algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph)
+            and explores as far as possible along each branch before backtracking.
+            <br>
+            A version of depth-first search was investigated in the 19th century by French mathematician Charles Pierre
+            Trémaux as a strategy for solving mazes.
+            <br>
+        </p>
+    </blockquote>
+    <h4>Properties:</h4>
+    <blockquote>
+        <p>
+            The time and space analysis of DFS differs according to its application area.
+            In theoretical computer science, DFS is typically used to traverse an entire graph, and takes time
+            O(|V|+|E|),
+            where |V| is the number of vertices and |E| the number of edges.
+            This is linear in the size of the graph. In these applications it also uses space O(|V|) in the worst
+            case to
+            store the stack of vertices on the current search path as well as the set of already-visited vertices.
+            Thus, in this setting, the time and space bounds are the same as for breadth-first search and the choice
+            of
+            which of these two algorithms to use depends less on their complexity and more on the different
+            properties of
+            the vertex orderings the two algorithms produce.
+            <br>
+            For applications of DFS in relation to specific domains, such as searching for solutions in artificial
+            intelligence or web-crawling,
+            the graph to be traversed is often either too large to visit in its entirety or infinite (DFS may suffer
+            from
+            non-termination).
+            In such cases, search is only performed to a limited depth; due to limited resources, such as memory or
+            disk
+            space, one typically does not use data structures to keep track of the set of all previously visited
+            vertices.
+            When search is performed to a limited depth, the time is still linear in terms of the number of expanded
+            vertices and edges (although this number is not the same as the size of the entire graph because some
+            vertices
+            may be searched more than once and others not at all) but the space complexity of this variant of DFS is
+            only
+            proportional to the depth limit,
+            and as a result, is much smaller than the space needed for searching to the same depth using
+            breadth-first
+            search. For such applications, DFS also lends itself much better to heuristic methods for choosing a
+            likely-looking branch.
+            When an appropriate depth limit is not known a priori, iterative deepening depth-first search applies
+            DFS
+            repeatedly with a sequence of increasing limits.
+            In the artificial intelligence mode of analysis, with a branching factor greater than one, iterative
+            deepening
+            increases the running time by only a constant factor over the case in which the correct depth limit is
+            known due
+            to the geometric growth of the number of nodes per level.
+            <br>
+            DFS may also be used to collect a sample of graph nodes. However, incomplete DFS, similarly to
+            incomplete BFS,
+            is biased towards nodes of high degree.
+        </p>
+        <br>
+
+    </blockquote>
+    <h4>Output of a depth-first search:</h4>
+    <blockquote>
+        <p>
+            A convenient description of a depth-first search of a graph is in terms of a spanning tree of the
+            vertices
+            reached during the search.
+            Based on this spanning tree, the edges of the original graph can be divided into three classes: forward
+            edges,
+            which point from a node of the tree to one of its descendants, back edges, which point from a node to
+            one of its
+            ancestors, and cross edges, which do neither.
+            Sometimes tree edges, edges which belong to the spanning tree itself, are classified separately from
+            forward
+            edges. If the original graph is undirected then all of its edges are tree edges or back edges.
+        </p>
+
+    </blockquote>
+
+    <p>
+        For Reference <a href="https://en.wikipedia.org/wiki/Depth-first_search">
+            https://en.wikipedia.org/wiki/Depth-first_search</a>
+        <br>
+    <h4>Classification of edges of a graph</h4>
+    We can classify the edges using the entry and exit time of the end nodes u and v of the edges (u,v). These
+    classifications are often used for problems like finding bridges and finding articulation points.
+    <br>
+    <br>
+    We perform a DFS and classify the encountered edges using the following rules:
+    <br>
+    <br>
+    If v is not visited:
+
+    <ul>
+        <li>Tree Edge - If v is visited after u then edge (u,v) is called a tree edge. In other words, if v is visited
+            for the first time and u is currently being visited then (u,v) is called tree edge. These edges form a DFS
+            tree and hence the name tree edges. If v is visited before u:</li>
+        <li> Back edges - If v is an ancestor of u, then the edge (u,v) is a back edge. v is an ancestor exactly if we
+            already entered v, but not exited it yet. Back edges complete a cycle as there is a path from ancestor v to
+            descendant u (in the recursion of DFS) and an edge from descendant u to ancestor v (back edge), thus a cycle
+            is formed. Cycles can be detected using back edges.</li>
+        <li> Forward Edges - If v is a descendant of u, then edge (u,v) is a forward edge. In other words, if we already
+            visited and exited v and entry[u] < entry[v] then the edge (u,v) forms a forward edge.</li>
+        <li> Cross Edges: if v is neither an ancestor or descendant of u, then edge (u,v) is a cross edge. In other
+            words, if we already visited and exited v and entry[u]>entry[v] then (u,v) is a cross edge.</li>
+    </ul>
+
+    Note: Forward edges and cross edges only exist in directed graphs.
+    <br>
+    <h4>Implementation</h4>
+    <pre>
+        vector<vector<int>> adj; // graph represented as an adjacency list
+            int n; // number of vertices
+
+            vector<bool> visited;
+
+                void dfs(int v) {
+                visited[v] = true;
+                for (int u : adj[v]) {
+                if (!visited[u])
+                dfs(u);
+                }
+                }
+    </pre>
+    This is the most simple implementation of Depth First Search. As described in the applications it might be useful to
+    also compute the entry and exit times and vertex color. We will color all vertices with the color 0, if we haven't
+    visited them, with the color 1 if we visited them, and with the color 2, if we already exited the vertex.
+    <br>
+    Here is a generic implementation that additionally computes those:
+    <pre>
+        vector<vector<int>> adj; // graph represented as an adjacency list
+            int n; // number of vertices
+
+            vector<int> color;
+
+                vector<int> time_in, time_out;
+                    int dfs_timer = 0;
+
+                    void dfs(int v) {
+                    time_in[v] = dfs_timer++;
+                    color[v] = 1;
+                    for (int u : adj[v])
+                    if (color[u] == 0)
+                    dfs(u);
+                    color[v] = 2;
+                    time_out[v] = dfs_timer++;
+                    }
+
+    </pre>
+    For Code Reference <a href=" https://cp-algorithms.com/graph/depth-first-search.html ">https://cp-algorithms.com/graph/depth-first-search.html</a>
+
+    <br>
+    <br>
+    </p>
+
 </body>
 
 </html>
